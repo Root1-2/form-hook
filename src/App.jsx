@@ -1,6 +1,8 @@
 import Input from "./components/Input";
+import { useForm } from "react-hook-form";
 
 function App() {
+  const form = useForm();
   return (
     <div className="h-screen bg-gray-200">
       <p className="pt-10 text-center text-2xl font-semibold underline">
