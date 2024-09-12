@@ -1,10 +1,9 @@
-import Input from "./components/Input";
+import Input from "./Input";
 import { useForm } from "react-hook-form";
 
 function App() {
   const form = useForm();
   const { register } = form;
-  const { name, ref, onChange, onBlur } = register("username");
 
   return (
     <div className="h-screen bg-gray-200">
@@ -15,10 +14,10 @@ function App() {
       <div className="flex justify-center">
         <div className="mt-10 w-1/2 rounded-lg bg-gray-300 p-5">
           <div className="flex flex-wrap gap-x-20">
-            <Input label="First Name" />
-            <Input label="Last Name" />
-            <Input label="Username" />
-            <Input label="Email Address" />
+            <Input label="First Name" id="fName" />
+            <Input label="Last Name" id="lName" />
+            <Input label="Username" id="uName" />
+            <Input label="Email Address" id="email" />
           </div>
           <div className="mt-3 flex justify-end">
             <button className="rounded-2xl bg-emerald-600 px-3 py-4">

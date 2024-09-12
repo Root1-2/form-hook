@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 
 function Input({
+  id,
   label,
   type = "text",
   disabled = false,
@@ -32,6 +33,7 @@ function Input({
         disabled={disabled}
         rows={rows}
         {...inputProps}
+        id={id}
       />
     );
   } else {
@@ -41,6 +43,7 @@ function Input({
         className={baseClassName}
         placeholder=" "
         disabled={disabled}
+        id={id}
         {...inputProps}
       />
     );
@@ -60,6 +63,7 @@ function Input({
 }
 
 Input.propTypes = {
+  id: PropTypes.string,
   label: PropTypes.string.isRequired,
   type: PropTypes.string,
   disabled: PropTypes.bool,
