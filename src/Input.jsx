@@ -7,21 +7,12 @@ function Input({
   disabled = false,
   rows = 8,
   w = "half",
-  name,
-  register,
-  onChange,
-  onBlur,
   error,
+  register,
+  name,
 }) {
   const baseClassName =
     "text-dark peer block w-full appearance-none border-0 border-b bg-transparent px-0 py-5 text-lg focus:outline-none focus:ring-0 border-gray-600 focus:border-blue-500";
-
-  const inputProps = {
-    name,
-    ...register,
-    onChange,
-    onBlur,
-  };
 
   let inputElement;
 
@@ -32,8 +23,8 @@ function Input({
         placeholder=" "
         disabled={disabled}
         rows={rows}
-        {...inputProps}
         id={id}
+        {...register(name)}
       />
     );
   } else {
@@ -44,7 +35,7 @@ function Input({
         placeholder=" "
         disabled={disabled}
         id={id}
-        {...inputProps}
+        {...register(name)}
       />
     );
   }
@@ -69,11 +60,9 @@ Input.propTypes = {
   disabled: PropTypes.bool,
   rows: PropTypes.number,
   w: PropTypes.string,
-  name: PropTypes.any,
-  register: PropTypes.object,
-  onChange: PropTypes.func,
-  onBlur: PropTypes.func,
   error: PropTypes.object,
+  register: PropTypes.func,
+  name: PropTypes.string,
 };
 
 export default Input;
