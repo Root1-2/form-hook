@@ -10,6 +10,7 @@ function Input({
   error,
   register,
   name,
+  regex,
 }) {
   const baseClassName =
     "text-dark peer block w-full appearance-none border-0 border-b bg-transparent px-0 py-5 text-lg focus:outline-none focus:ring-0 border-gray-600 focus:border-blue-500";
@@ -39,6 +40,10 @@ function Input({
         id={id}
         {...register(name, {
           required: error,
+          pattern: {
+            value: regex,
+            message: error,
+          },
         })}
       />
     );
@@ -67,6 +72,7 @@ Input.propTypes = {
   error: PropTypes.any,
   register: PropTypes.func,
   name: PropTypes.string,
+  regex: PropTypes.any,
 };
 
 export default Input;

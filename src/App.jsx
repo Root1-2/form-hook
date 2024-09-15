@@ -46,6 +46,8 @@ function App() {
                 id="email"
                 name="email"
                 register={register}
+                regex={/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/}
+                error="Invalid Email Format"
               />
               <Input
                 label="Password"
