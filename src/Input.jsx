@@ -8,6 +8,7 @@ function Input({
   rows = 8,
   w = "half",
   error,
+  errors,
   register,
   name,
   regex,
@@ -26,7 +27,8 @@ function Input({
         rows={rows}
         id={id}
         {...register(name, {
-          required: error,
+          value: true,
+          required: "Name is Required",
         })}
       />
     );
@@ -39,7 +41,10 @@ function Input({
         disabled={disabled}
         id={id}
         {...register(name, {
-          required: error,
+          required: {
+            value: true,
+            message: "This field is Required",
+          },
           pattern: {
             value: regex,
             message: error,
@@ -49,6 +54,8 @@ function Input({
     );
   }
 
+  // console.log(errors);
+
   return (
     <div
       className={`group relative z-0 mb-5 ${w === "full" ? "w-11/12" : "w-5/12"}`}
@@ -57,7 +64,9 @@ function Input({
       <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-emerald-400 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:start-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-500 rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4">
         {label}
       </label>
-      {error && <p className="text-sm text-red-500">{error.message}</p>}
+      {errors && (
+        <p className="text-sm text-red-500">{errors[name]?.message}</p>
+      )}
     </div>
   );
 }
@@ -73,6 +82,7 @@ Input.propTypes = {
   register: PropTypes.func,
   name: PropTypes.string,
   regex: PropTypes.any,
+  errors: PropTypes.object,
 };
 
 export default Input;

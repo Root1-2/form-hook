@@ -5,7 +5,8 @@ import { DevTool } from "@hookform/devtools";
 let renderCount = 0;
 
 function App() {
-  const { register, control, handleSubmit } = useForm();
+  const { register, control, handleSubmit, formState } = useForm();
+  const { errors } = formState;
 
   function onSubmit(data) {
     console.log("Form Submitted", data);
@@ -27,19 +28,21 @@ function App() {
                 id="fName"
                 name="fName"
                 register={register}
+                errors={errors}
               />
               <Input
                 label="Last Name"
                 id="lName"
                 name="lName"
                 register={register}
+                errors={errors}
               />
               <Input
                 label="Username"
                 id="uName"
                 name="uName"
-                error="Username is required"
                 register={register}
+                errors={errors}
               />
               <Input
                 label="Email Address"
@@ -48,18 +51,21 @@ function App() {
                 register={register}
                 regex={/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/}
                 error="Invalid Email Format"
+                errors={errors}
               />
               <Input
                 label="Password"
                 id="pass"
                 name="pass"
                 register={register}
+                errors={errors}
               />
               <Input
                 label="Confirm Password"
                 id="conPass"
                 name="conPass"
                 register={register}
+                errors={errors}
               />
             </div>
             <div className="mt-3 flex justify-end">
