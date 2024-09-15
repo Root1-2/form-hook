@@ -2,13 +2,17 @@ import Input from "./Input";
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 
+let renderCount = 0;
+
 function App() {
   const { register, control } = useForm();
+
+  renderCount++;
 
   return (
     <div className="h-screen bg-gray-200">
       <p className="pt-10 text-center text-2xl font-semibold underline">
-        React Form Hook
+        React Form Hook ({renderCount / 2})
       </p>
       <form>
         <div className="flex justify-center">
