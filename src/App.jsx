@@ -5,7 +5,11 @@ import { DevTool } from "@hookform/devtools";
 let renderCount = 0;
 
 function App() {
-  const { register, control } = useForm();
+  const { register, control, handleSubmit } = useForm();
+
+  function onSubmit(data) {
+    console.log("Form Submitted", data);
+  }
 
   renderCount++;
 
@@ -14,7 +18,7 @@ function App() {
       <p className="pt-10 text-center text-2xl font-semibold underline">
         React Form Hook ({renderCount / 2})
       </p>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <div className="flex justify-center">
           <div className="mt-10 w-1/2 rounded-lg bg-gray-300 p-5">
             <div className="flex flex-wrap gap-x-20">
@@ -34,6 +38,7 @@ function App() {
                 label="Username"
                 id="uName"
                 name="uName"
+                error="Username is required"
                 register={register}
               />
               <Input

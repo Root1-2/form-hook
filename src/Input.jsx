@@ -24,7 +24,9 @@ function Input({
         disabled={disabled}
         rows={rows}
         id={id}
-        {...register(name)}
+        {...register(name, {
+          required: error,
+        })}
       />
     );
   } else {
@@ -35,7 +37,9 @@ function Input({
         placeholder=" "
         disabled={disabled}
         id={id}
-        {...register(name)}
+        {...register(name, {
+          required: error,
+        })}
       />
     );
   }
@@ -60,7 +64,7 @@ Input.propTypes = {
   disabled: PropTypes.bool,
   rows: PropTypes.number,
   w: PropTypes.string,
-  error: PropTypes.object,
+  error: PropTypes.any,
   register: PropTypes.func,
   name: PropTypes.string,
 };
