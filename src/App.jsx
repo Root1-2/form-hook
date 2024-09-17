@@ -56,10 +56,18 @@ function App() {
       message: "Invalid Email Format",
     },
     validate: {
-      notAdmin: (value) =>
-        value !== "admin@example.com" || "Enter a Different Email Address",
-      notBlackListed: (value) =>
-        !value.endsWith("baddomain.com") || "This Domain is not supported",
+      notAdmin: (fieldValue) =>
+        fieldValue !== "admin@example.com" || "Enter a Different Email Address",
+      notBlackListed: (fieldValue) =>
+        !fieldValue.endsWith("baddomain.com") || "This Domain is not supported",
+      emailAvailable: async (fieldValue) => {
+        const response = await fetch(
+          `https://jsonplaceholder.typicode.com/users?email=${fieldValue}`,
+        );
+        const data = await response.json();
+
+        return data.length == 0 || "This email already exist";
+      },
     },
   };
 
