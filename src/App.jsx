@@ -5,23 +5,30 @@ import { DevTool } from "@hookform/devtools";
 let renderCount = 0;
 
 function App() {
-  const { register, control, handleSubmit, formState, watch, getValues } =
-    useForm({
-      defaultValues: {
-        uName: "",
-        fName: "",
-        lName: "",
-        email: "",
-        pass: "",
-        age: 0,
-        dob: new Date(),
-        social: {
-          twitter: "",
-          github: "",
-        },
-        phoneNumbers: ["", ""],
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState,
+    watch,
+    getValues,
+    setValue,
+  } = useForm({
+    defaultValues: {
+      uName: "",
+      fName: "",
+      lName: "",
+      email: "",
+      pass: "",
+      age: 0,
+      dob: new Date(),
+      social: {
+        twitter: "",
+        github: "",
       },
-    });
+      phoneNumbers: ["", ""],
+    },
+  });
   const { errors } = formState;
 
   function onSubmit(data) {
@@ -47,6 +54,11 @@ function App() {
 
   function handleGetValues() {
     console.log("Get Values:", getValues());
+  }
+
+  function handleSetValues() {
+    setValue("uName", "Boom");
+    setValue("fName", "First Name Set");
   }
 
   return (
@@ -162,6 +174,13 @@ function App() {
                 className="rounded-2xl bg-blue-500 px-3 py-4"
               >
                 Get Values
+              </button>
+              <button
+                type="button"
+                onClick={handleSetValues}
+                className="rounded-2xl bg-cyan-500 px-3 py-4"
+              >
+                Set Values
               </button>
             </div>
           </div>
