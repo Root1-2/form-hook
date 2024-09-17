@@ -1,6 +1,7 @@
 import Input from "./Input";
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
+import { useEffect } from "react";
 
 let renderCount = 0;
 
@@ -13,6 +14,7 @@ function App() {
     watch,
     getValues,
     setValue,
+    reset,
   } = useForm({
     defaultValues: {
       uName: "",
@@ -38,7 +40,7 @@ function App() {
     isSubmitSuccessful,
   } = formState;
 
-  console.log(isSubmitting);
+  console.log(isSubmitting, isSubmitted, isSubmitSuccessful);
 
   function onSubmit(data) {
     console.log("Form Submitted", data);
@@ -73,6 +75,12 @@ function App() {
   function onError(errors) {
     console.log("Form Errors:", errors);
   }
+
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset();
+    }
+  }, [isSubmitSuccessful, reset]);
 
   return (
     <div className="h-screen bg-gray-200">
@@ -198,6 +206,13 @@ function App() {
                 className="rounded-2xl bg-cyan-500 px-3 py-4"
               >
                 Set Values
+              </button>
+              <button
+                type="button"
+                onClick={() => reset()}
+                className="rounded-2xl bg-cyan-500 px-3 py-4"
+              >
+                Reset
               </button>
             </div>
           </div>
