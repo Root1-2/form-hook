@@ -29,7 +29,7 @@ function App() {
       phoneNumbers: ["", ""],
     },
   });
-  const { errors } = formState;
+  const { errors, isDirty, isValid } = formState;
 
   function onSubmit(data) {
     console.log("Form Submitted", data);
@@ -170,7 +170,10 @@ function App() {
               />
             </div>
             <div className="mt-3 flex justify-end gap-5">
-              <button className="rounded-2xl bg-emerald-600 px-3 py-4">
+              <button
+                disabled={!isDirty || !isValid}
+                className="rounded-2xl bg-emerald-600 px-3 py-4"
+              >
                 Submit
               </button>
               <button
