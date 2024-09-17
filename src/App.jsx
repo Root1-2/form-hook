@@ -12,6 +12,8 @@ function App() {
       lName: "",
       email: "",
       pass: "",
+      age: 0,
+      dob: new Date(),
       social: {
         twitter: "",
         github: "",
@@ -89,6 +91,22 @@ function App() {
                 label="Secondary Number"
                 id="sNum"
                 name="phoneNumbers.1"
+                register={register}
+                errors={errors}
+              />
+              <Input
+                label="Age"
+                type="number"
+                id="age"
+                name="age"
+                register={register}
+                errors={errors}
+              />
+              <Input
+                label="Date of Birth"
+                type="date"
+                id="dob"
+                name="dob"
                 register={register}
                 errors={errors}
               />

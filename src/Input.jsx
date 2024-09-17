@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 function Input({
   id,
   label,
-  type = "text",
+  type,
   disabled = false,
   w = "half",
   errors,
@@ -29,6 +29,8 @@ function Input({
         disabled={disabled}
         id={id}
         {...register(name, {
+          ...(type === "number" && { valueAsNumber: true }),
+          ...(type === "date" && { valueAsDate: true }),
           required: {
             value: true,
             message: "This field is Required",
