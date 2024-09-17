@@ -16,6 +16,7 @@ function App() {
         twitter: "",
         github: "",
       },
+      phoneNumbers: ["", ""],
     },
   });
   const { errors } = formState;
@@ -25,6 +26,19 @@ function App() {
   }
 
   renderCount++;
+
+  const validateEmail = {
+    pattern: {
+      value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+      message: "Invalid Email Format",
+    },
+    validate: {
+      notAdmin: (value) =>
+        value !== "admin@example.com" || "Enter a Different Email Address",
+      notBlackListed: (value) =>
+        !value.endsWith("baddomain.com") || "This Domain is not supported",
+    },
+  };
 
   return (
     <div className="h-screen bg-gray-200">
@@ -61,10 +75,22 @@ function App() {
                 id="email"
                 name="email"
                 register={register}
-                regex={/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/}
-                error="Invalid Email Format"
                 errors={errors}
-                // placeholder="mew@example.com"
+                validation={validateEmail}
+              />
+              <Input
+                label="Primary Number"
+                id="pNum"
+                name="phoneNumbers.0"
+                register={register}
+                errors={errors}
+              />
+              <Input
+                label="Secondary Number"
+                id="sNum"
+                name="phoneNumbers.1"
+                register={register}
+                errors={errors}
               />
               <Input
                 label="Password"

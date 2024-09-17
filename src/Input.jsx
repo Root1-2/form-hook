@@ -10,13 +10,11 @@ function Input({
   errors,
   register,
   name,
-  regex,
+  validation, // Accepting the validation props
   placeholder,
 }) {
   const baseClassName =
     "text-dark peer block w-full appearance-none border-0 border-b bg-transparent px-0 py-5 text-lg focus:outline-none focus:ring-0 border-gray-600 focus:border-blue-500";
-
-  // console.log(errors);
 
   return (
     <div
@@ -33,30 +31,15 @@ function Input({
             value: true,
             message: "This field is Required",
           },
-          pattern: {
-            value: regex,
-            message: error,
-          },
-          validate: {
-            notAdmin: (fieldValue) => {
-              return (
-                fieldValue !== "admin@example.com" ||
-                "Enter a Different Email Address"
-              );
-            },
-            notBlackListed: (fieldValue) => {
-              return (
-                !fieldValue.endsWith("baddomain.com") ||
-                "This Domain is not supported"
-              );
-            },
-          },
+          ...validation,
         })}
       />
       <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-emerald-400 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:start-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-500 rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4">
         {label}
       </label>
-      {errors && <p className="text-sm text-red-500">{errors[id]?.message}</p>}
+      {errors && (
+        <p className="text-sm text-red-500">{errors[name]?.message}</p>
+      )}
     </div>
   );
 }
@@ -71,7 +54,7 @@ Input.propTypes = {
   error: PropTypes.any,
   register: PropTypes.func,
   name: PropTypes.string,
-  regex: PropTypes.any,
+  validation: PropTypes.object, // Validation prop
   errors: PropTypes.object,
   placeholder: PropTypes.string,
 };
