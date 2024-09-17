@@ -12,6 +12,10 @@ function App() {
       lName: "",
       email: "",
       pass: "",
+      social: {
+        twitter: "",
+        github: "",
+      },
     },
   });
   const { errors } = formState;
@@ -60,7 +64,7 @@ function App() {
                 regex={/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/}
                 error="Invalid Email Format"
                 errors={errors}
-                placeholder="mew@example.com"
+                // placeholder="mew@example.com"
               />
               <Input
                 label="Password"
@@ -73,6 +77,20 @@ function App() {
                 label="Confirm Password"
                 id="conPass"
                 name="conPass"
+                register={register}
+                errors={errors}
+              />
+              <Input
+                label="Twitter"
+                id="twitter"
+                name="social.twitter"
+                register={register}
+                errors={errors}
+              />
+              <Input
+                label="GitHub"
+                id="github"
+                name="social.github"
                 register={register}
                 errors={errors}
               />
