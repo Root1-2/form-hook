@@ -5,7 +5,7 @@ import { DevTool } from "@hookform/devtools";
 let renderCount = 0;
 
 function App() {
-  const { register, control, handleSubmit, formState } = useForm({
+  const { register, control, handleSubmit, formState, watch } = useForm({
     defaultValues: {
       uName: "",
       fName: "",
@@ -29,6 +29,8 @@ function App() {
 
   renderCount++;
 
+  const watchUsername = watch(["uName", "email"]);
+
   const validateEmail = {
     pattern: {
       value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -46,6 +48,12 @@ function App() {
     <div className="h-screen bg-gray-200">
       <p className="pt-10 text-center text-2xl font-semibold underline">
         React Form Hook ({renderCount / 2})
+      </p>
+      <p className="mt-3 text-center text-2xl text-red-500">
+        Welcome: {watchUsername}
+      </p>
+      <p className="mt-3 text-center text-2xl text-red-500">
+        Welcome: {watchUsername}
       </p>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <div className="flex justify-center">
