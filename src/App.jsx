@@ -5,22 +5,23 @@ import { DevTool } from "@hookform/devtools";
 let renderCount = 0;
 
 function App() {
-  const { register, control, handleSubmit, formState, watch } = useForm({
-    defaultValues: {
-      uName: "",
-      fName: "",
-      lName: "",
-      email: "",
-      pass: "",
-      age: 0,
-      dob: new Date(),
-      social: {
-        twitter: "",
-        github: "",
+  const { register, control, handleSubmit, formState, watch, getValues } =
+    useForm({
+      defaultValues: {
+        uName: "",
+        fName: "",
+        lName: "",
+        email: "",
+        pass: "",
+        age: 0,
+        dob: new Date(),
+        social: {
+          twitter: "",
+          github: "",
+        },
+        phoneNumbers: ["", ""],
       },
-      phoneNumbers: ["", ""],
-    },
-  });
+    });
   const { errors } = formState;
 
   function onSubmit(data) {
@@ -43,6 +44,10 @@ function App() {
         !value.endsWith("baddomain.com") || "This Domain is not supported",
     },
   };
+
+  function handleGetValues() {
+    console.log("Get Values:", getValues());
+  }
 
   return (
     <div className="h-screen bg-gray-200">
@@ -147,9 +152,16 @@ function App() {
                 errors={errors}
               />
             </div>
-            <div className="mt-3 flex justify-end">
+            <div className="mt-3 flex justify-end gap-5">
               <button className="rounded-2xl bg-emerald-600 px-3 py-4">
                 Submit
+              </button>
+              <button
+                type="button"
+                onClick={handleGetValues}
+                className="rounded-2xl bg-blue-500 px-3 py-4"
+              >
+                Get Values
               </button>
             </div>
           </div>
