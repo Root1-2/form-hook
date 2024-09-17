@@ -49,6 +49,20 @@ function Input({
             value: regex,
             message: error,
           },
+          validate: {
+            notAdmin: (fieldValue) => {
+              return (
+                fieldValue !== "admin@example.com" ||
+                "Enter a Different Email Address"
+              );
+            },
+            notBlackListed: (fieldValue) => {
+              return (
+                !fieldValue.endsWith("baddomain.com") ||
+                "This Domain is not supported"
+              );
+            },
+          },
         })}
       />
     );
