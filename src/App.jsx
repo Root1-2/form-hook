@@ -61,6 +61,10 @@ function App() {
     setValue("fName", "First Name Set");
   }
 
+  function onError(errors) {
+    console.log("Form Errors:", errors);
+  }
+
   return (
     <div className="h-screen bg-gray-200">
       <p className="pt-10 text-center text-2xl font-semibold underline">
@@ -72,7 +76,7 @@ function App() {
       <p className="mt-3 text-center text-2xl text-red-500">
         Welcome: {watchUsername}
       </p>
-      <form onSubmit={handleSubmit(onSubmit)} noValidate>
+      <form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
         <div className="flex justify-center">
           <div className="mt-10 w-1/2 rounded-lg bg-gray-300 p-5">
             <div className="flex flex-wrap gap-x-20">
