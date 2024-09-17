@@ -5,7 +5,15 @@ import { DevTool } from "@hookform/devtools";
 let renderCount = 0;
 
 function App() {
-  const { register, control, handleSubmit, formState } = useForm();
+  const { register, control, handleSubmit, formState } = useForm({
+    defaultValues: {
+      uName: "",
+      fName: "",
+      lName: "",
+      email: "",
+      pass: "",
+    },
+  });
   const { errors } = formState;
 
   function onSubmit(data) {
@@ -52,6 +60,7 @@ function App() {
                 regex={/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/}
                 error="Invalid Email Format"
                 errors={errors}
+                placeholder="mew@example.com"
               />
               <Input
                 label="Password"
