@@ -118,6 +118,7 @@ function App() {
                 name="phoneNumbers.1"
                 register={register}
                 errors={errors}
+                disabled={watch("phoneNumbers.0") === ""}
               />
               <Input
                 label="Age"

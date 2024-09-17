@@ -31,6 +31,7 @@ function Input({
         {...register(name, {
           ...(type === "number" && { valueAsNumber: true }),
           ...(type === "date" && { valueAsDate: true }),
+          disabled: disabled,
           required: {
             value: true,
             message: "This field is Required",
