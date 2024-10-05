@@ -5,7 +5,6 @@ function Input({
   label,
   type,
   disabled = false,
-  w = "half",
   errors,
   register,
   name,
