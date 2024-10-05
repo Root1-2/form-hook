@@ -132,7 +132,7 @@ const Form = ({
             />
           </div>
         </div>
-        <div className="flex flex-1">
+        <div className="flex flex-1 gap-2">
           <SubmitButton
             isDirty={isDirty}
             isValid={isValid}

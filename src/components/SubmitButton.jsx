@@ -4,7 +4,7 @@ const SubmitButton = ({ isDirty, isValid, isSubmitting }) => {
   return (
     <button
       type="submit"
-      disabled={!isDirty || !isValid || isSubmitting}
+      disabled={isSubmitting}
       className="rounded-2xl bg-blue-600 px-3 py-2 text-white"
     >
       Submit
