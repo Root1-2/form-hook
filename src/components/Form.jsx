@@ -19,7 +19,7 @@ const Form = ({
     <div className="mt-10 flex justify-center bg-blue-50">
       <div className="w-3/4 rounded-lg bg-blue-100 p-8 shadow-md">
         <div className="mx-4 flex flex-wrap">
-          <div className="w-1/2 px-4">
+          <div className="w-1/2 px-10 py-2">
             <Input
               label="First Name"
               id="fName"
@@ -28,7 +28,7 @@ const Form = ({
               errors={errors}
             />
           </div>
-          <div className="w-1/2 px-4">
+          <div className="w-1/2 px-10 py-2">
             <Input
               label="Last Name"
               id="lName"
@@ -37,7 +37,7 @@ const Form = ({
               errors={errors}
             />
           </div>
-          <div className="w-1/2 px-4">
+          <div className="w-1/2 px-10 py-2">
             <Input
               label="Username"
               id="uName"
@@ -46,7 +46,7 @@ const Form = ({
               errors={errors}
             />
           </div>
-          <div className="w-1/2 px-4">
+          <div className="w-1/2 px-10 py-2">
             <Input
               label="Email Address"
               id="email"
@@ -56,7 +56,7 @@ const Form = ({
               validation={emailValidation}
             />
           </div>
-          <div className="w-1/2 px-4">
+          <div className="w-1/2 px-10 py-2">
             <Input
               label="Primary Number"
               id="pNum"
@@ -65,7 +65,7 @@ const Form = ({
               errors={errors}
             />
           </div>
-          <div className="w-1/2 px-4">
+          <div className="w-1/2 px-10 py-2">
             <Input
               label="Secondary Number"
               id="sNum"
@@ -75,7 +75,7 @@ const Form = ({
               disabled={watch("phoneNumbers.0") === ""}
             />
           </div>
-          <div className="w-1/2 px-4">
+          <div className="w-1/2 px-10 py-2">
             <Input
               label="Age"
               type="number"
@@ -85,7 +85,7 @@ const Form = ({
               errors={errors}
             />
           </div>
-          <div className="w-1/2 px-4">
+          <div className="w-1/2 px-10 py-2">
             <Input
               label="Date of Birth"
               type="date"
@@ -95,7 +95,7 @@ const Form = ({
               errors={errors}
             />
           </div>
-          <div className="w-1/2 px-4">
+          <div className="w-1/2 px-10 py-2">
             <Input
               label="Password"
               id="pass"
@@ -104,7 +104,7 @@ const Form = ({
               errors={errors}
             />
           </div>
-          <div className="w-1/2 px-4">
+          <div className="w-1/2 px-10 py-2">
             <Input
               label="Confirm Password"
               id="conPass"
@@ -113,7 +113,7 @@ const Form = ({
               errors={errors}
             />
           </div>
-          <div className="w-1/2 px-4">
+          <div className="w-1/2 px-10 py-2">
             <Input
               label="Twitter"
               id="twitter"
@@ -122,7 +122,7 @@ const Form = ({
               errors={errors}
             />
           </div>
-          <div className="w-1/2 px-4">
+          <div className="w-1/2 px-10 py-2">
             <Input
               label="GitHub"
               id="github"
