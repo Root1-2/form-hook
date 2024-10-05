@@ -5,7 +5,7 @@ const SubmitButton = ({ isDirty, isValid, isSubmitting }) => {
     <button
       type="submit"
       disabled={isSubmitting}
-      className="rounded-2xl bg-blue-600 px-3 py-2 text-white"
+      className="rounded-2xl bg-blue-600 px-3 py-0 text-white"
     >
       Submit
     </button>

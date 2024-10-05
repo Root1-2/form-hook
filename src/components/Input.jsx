@@ -19,9 +19,7 @@ function Input({
     errors && name.split(".").reduce((acc, part) => acc && acc[part], errors);
 
   return (
-    <div
-      className={`group relative z-0 mb-5 ${w === "full" ? "w-11/12" : "w-5/12"}`}
-    >
+    <div className={`group relative z-0 mb-5 w-full`}>
       <input
         type={type}
         className={baseClassName}
